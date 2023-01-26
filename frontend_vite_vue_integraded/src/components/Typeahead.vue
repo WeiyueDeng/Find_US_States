@@ -22,7 +22,7 @@ const apolloClient = new ApolloClient({
 provideApolloClient(apolloClient)
 // <ADD YOUR GOOGLE MAP API KEY>
 //init map
-const map_url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyAYouyWg0toxZBzPriPc4DePvfFNJkr-7I&q=";
+const map_url = "https://www.google.com/maps/embed/v1/place?key=<ADD YOUR GOOGLE MAP API KEY>&q=";
 const location = "United+States";
 const link = map_url+location;
 
