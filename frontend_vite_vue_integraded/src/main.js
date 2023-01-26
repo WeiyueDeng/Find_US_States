@@ -7,7 +7,7 @@ import { ApolloClients } from '@vue/apollo-composable'
 
 // HTTP connection to the API
 const httpLink = createHttpLink({
-  // You should use an absolute URL here
+  // You should use an absolute URL here, graphql endpoint
   uri: 'http://localhost:4000',
 })
 

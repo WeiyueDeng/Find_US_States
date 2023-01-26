@@ -20,7 +20,7 @@ const apolloClient = new ApolloClient({
 })
 //need to individually create an apolloClient since the useQuery() is used outside of setup
 provideApolloClient(apolloClient)
-
+// <ADD YOUR GOOGLE MAP API KEY>
 //init map
 const map_url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyAYouyWg0toxZBzPriPc4DePvfFNJkr-7I&q=";
 const location = "United+States";
