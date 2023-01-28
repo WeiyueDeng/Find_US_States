@@ -12,7 +12,6 @@ const typeDefs = gql`
     latitude: Float!
     longitude: Float!
   } 
-
   input StatesInputFilter {
     keyword: String!
   }
@@ -23,8 +22,6 @@ const typeDefs = gql`
   type Query {
     #getStates: [State]
     states(keyword:String!): [State]! 
-    #matchedStates(input: StatesInputFilter):[State]!
-    #getStates:[State]
   }
 `;
 // const filter = {
