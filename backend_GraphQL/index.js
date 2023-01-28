@@ -8,18 +8,28 @@ const typeDefs = gql`
 
   # This "Book" type defines the queryable fields: 'title' and 'author'.
   type State {
-    name: String
-    latitude: Float
-    longitude: Float
+    name: String!
+    latitude: Float!
+    longitude: Float!
+  } 
+
+  input StatesInputFilter {
+    keyword: String!
   }
 
   # The "Query" type is special: it lists all of the available queries that
   # clients can execute, along with the return type for each. In this
   # case, the "books" query returns an array of zero or more Books (defined above).
   type Query {
-    getStates: [State]
+    #getStates: [State]
+    states(keyword:String!): [State]! 
+    #matchedStates(input: StatesInputFilter):[State]!
+    #getStates:[State]
   }
 `;
+// const filter = {
+//     "keyword": "New"
+// }
 const states = [
         {
             name:"Alaska",
@@ -275,9 +285,24 @@ const states = [
 
 const resolvers = {
     Query: {
-        getStates(){
-            return states;
-        },
+        // getStates(){
+        //     return states;
+        // },
+        states(parent, args, contextValue, info) {
+            // console.log(args.keyword);
+            console.log("key->",args.keyword);
+            return states.filter((state) => {
+                var stateName = state.name;
+                var targetMatch = new RegExp(args.keyword, "gi");
+                console.log("state",state.name);
+                var hasMatched = stateName.match(targetMatch);
+                console.log("matched",hasMatched);
+                return !(hasMatched == null);
+            });
+        }
+        // matchedStates(){
+        //     return states;
+        // }
     },
 };
 
